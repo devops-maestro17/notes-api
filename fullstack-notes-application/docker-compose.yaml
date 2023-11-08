@@ -4,21 +4,21 @@ services:
     db:
         build:
             context: ./postgres
-            dockerfile: Dockerfile.dev
+            dockerfile: Dockerfile
         environment:
             POSTGRES_PASSWORD: 63eaQB9wtLqmNBpg
             POSTGRES_DB: notesdb
     nginx:
         build:
             context: ./nginx
-            dockerfile: Dockerfile.dev
+            dockerfile: Dockerfile
         ports: 
             - 80:80
         restart: always
     api:
         build: 
             context: ./api
-            dockerfile: Dockerfile.dev
+            dockerfile: Dockerfile
         volumes: 
             - /usr/app/node_modules
             - ./api:/usr/app
@@ -32,7 +32,7 @@ services:
     client:
         build:
             context: ./client
-            dockerfile: Dockerfile.dev
+            dockerfile: Dockerfile
         volumes: 
             - /usr/app/node_modules
             - ./client:/usr/app
